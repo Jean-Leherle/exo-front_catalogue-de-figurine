@@ -3,8 +3,9 @@ const dataMapper = require('../dataMapper');
 
 const bookmarksController = {
   bookmarksPage: (req, res) => {
-
-    res.render('favoris.ejs');
+    const bookmarks = req.session.bookmarks;
+    console.log(bookmarks);
+    res.render('favoris.ejs', {bookmarks});
   },
   bookmarksAddFigurine: async (req, res) => {
     if (!req.session.bookmarks) {
@@ -17,8 +18,7 @@ const bookmarksController = {
       req.session.bookmarks.push(figurine);
     }
 
-    console.log(req.session.bookmarks);
-    
+
     res.redirect('/bookmarks');
     }
     catch(error){

@@ -15,5 +15,4 @@ articlePage: (req, res) => {
 },
 };
 
-
 module.exports = mainController;

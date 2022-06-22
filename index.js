@@ -14,7 +14,7 @@ const app = express();
 
 // servir les fichiers statiques qui sont dans "integration"
 app.use(express.static('integration'));
-
+//app.use(express.static('public'));
 // routage !
 app.use(router);
 

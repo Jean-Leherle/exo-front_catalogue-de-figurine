@@ -18,12 +18,12 @@
               <div class="card-body">
                   <h3 class="card-title">
                     <%= figurine.name %> 
-                    <div class="badge badge-pill badge-gentil"><%= figurine.category  %></div>
+                    <div class="badge badge-pill badge-<%= figurine.category.toLowerCase() %>"><%= figurine.category  %></div>
                   </h3>
                   <p class="card-text">Taille réelle : <%= figurine.size  %>cm</p>
                   <p class="card-text"><%= figurine.description  %></p>
                   <p class="card-text">3
-                    Note moyenne : &#9733; &#9733; &#9733; &#9733; &#9734;
+                    Note moyenne : &#9733; &#q9733; &#9733; &#9733; &#9734;
                     <br>
                     <a href="#" data-toggle="modal" data-target="#reviewsModal">Détails des avis</a>
                   </p>

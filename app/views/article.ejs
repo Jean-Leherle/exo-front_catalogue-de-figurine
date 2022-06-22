@@ -29,12 +29,10 @@
                   <p class="card-text">
                     <%=reviews.length%>
 
-                    <% const note = Math.round(reviews.reduce((acc, current)=> (acc) + (current.note/reviews.length)
-                    ,0)) %>
+                    <% const note = Math.round(reviews.reduce((acc, current)=> (acc) + (current.note/reviews.length),0)) %>
 
                       Note moyenne : <%=note%>  <span><%for(i=1; i<=5 ; i++ ) { %>
-                        <%=i<=note ? '★' : '☆' %> 
-                        
+                        <%=i<=note ? '★' : '☆' %>
                         <% } %></span>
                         <br>
                         <a href="#" data-toggle="modal" data-target="#reviewsModal">Détails des avis</a>
@@ -76,28 +74,21 @@
             </button>
           </div>
           <div class="modal-body">
+            <% for (review of reviews) { %> 
             <section>
-              <h5>Une belle figurine &nbsp; <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+              <h5><%= review.title %> &nbsp; <small class="text-muted"><span><%for(i=1; i<=5 ; i++ ) { %>
+                        <%=i<=review.note ? '★' : '☆' %> 
+                        
+                        <% } %></span></small>
               </h5>
-              <p class="review-author">par Jean-Claude Dus</p>
-              <p>La finition est bien, le rose est vraiment rose. Seul bémol, le livreur a abimé la main droite.</p>
+              <p class="review-author"><%= review.author %></p>
+              <p><%= review.message %></p>
             </section>
-
-            <hr>
-
-            <section>
-              <h5>Bof Bof... &nbsp; <small class="text-muted">&#9733; &#9733; &#9734; &#9734; &#9734;</small></h5>
-              <p class="review-author">par Thérèse de Monsou</p>
-              <p>La figurine ne tient pas debout seule. Certains détails sont mal finis, comme les bracelets.</p>
-            </section>
-
-            <hr>
-
-            <section>
-              <h5>Juste parfait &nbsp; <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9733;</small></h5>
-              <p class="review-author">par Monsieur Preskovitch</p>
-              <p>C'est tellement parfait, on dirait que c'est roulé à la main sous les aisselles.</p>
-            </section>
+            <%if (reviews.indexOf(review)!== reviews.length -1) { %>
+              <hr>
+            <% } %> 
+            <% } %> 
+            
 
           </div>
           <div class="modal-footer">

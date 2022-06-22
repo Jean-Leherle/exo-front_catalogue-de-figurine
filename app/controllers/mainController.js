@@ -8,8 +8,9 @@ const mainController = {
   homePage: async (req, res) => {
 
     try {
+
       const figurines = await dataMapper.getAllFigurines();
-      
+
       res.render('accueil.ejs', { figurines });
     }
     catch (error) {
@@ -18,9 +19,22 @@ const mainController = {
     }
   },
 
-  articlePage: (req, res) => {
+  articlePage: async (req, res, next) => {
+    try {
+      const articleId = req.params.id;
+      const figurine = await dataMapper.getOneFigurine(articleId);
 
-    res.render('article.ejs');
+      if (!figurine) {
+        next();
+      } else {
+
+    res.render('article.ejs', { figurine });
+      }
+
+    } catch (error) {
+      res.status(500).send("erreur 500");
+    }
+
   },
 };
 

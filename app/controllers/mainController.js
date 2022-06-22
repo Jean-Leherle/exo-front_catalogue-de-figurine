@@ -10,8 +10,9 @@ const mainController = {
     try {
 
       const figurines = await dataMapper.getAllFigurines();
+      const reviews = await dataMapper.getNoteReviews();
       
-      res.render('accueil.ejs', { figurines });
+      res.render('accueil.ejs', { figurines, reviews });
     }
     catch (error) {
       res.status(500).send("erreur 500");
@@ -23,12 +24,13 @@ const mainController = {
     try {
       const articleId = req.params.id;
       const figurine = await dataMapper.getOneFigurine(articleId);
+      const reviews = await dataMapper.getReviewsbyId(articleId)
 
       if (!figurine) {
         next();
       } else {
 
-    res.render('article.ejs', { figurine });
+    res.render('article.ejs', { figurine, reviews });
       }
 
     } catch (error) {

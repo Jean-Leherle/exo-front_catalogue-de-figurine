@@ -25,8 +25,18 @@
                   <h5>$<%= figurine.price %></h5>
                   <p class="card-text"><%= figurine.description %></p>
                 </div>
+
+                <% const reviewTarget = reviews.filter((review)=>review.figurine_id===figurine.id ) %>
+
                 <div class="card-footer">
-                  <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                  <small class="text-muted"><%=reviewTarget.length%>
+                    
+                    <% const note = Math.round(reviewTarget.reduce((acc, current)=> (acc) + (current.note/reviewTarget.length),0)) %>
+
+                      Note moyenne : <%=note%>  <span><%for(i=1; i<=5 ; i++ ) { %>
+                        <%=i<=note ? '★' : '☆' %> 
+                        
+                        <% } %></span></small>
                   <a href="/bookmarks/add/<%= figurine.id %> " class="link-add-bookmarks">+ Ajouter aux favoris</a>
                 </div>
               </div>

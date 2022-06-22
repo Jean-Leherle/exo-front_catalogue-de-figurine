@@ -7,6 +7,7 @@ const bookmarksController = require('./controllers/bookmarksController');
 
 const router = express.Router();
 
+
 // page d'accueil
 router.get('/', mainController.homePage);
 
@@ -15,6 +16,7 @@ router.get('/article/:id', mainController.articlePage);
 
 // page favoris
 router.get('/bookmarks', bookmarksController.bookmarksPage );
+router.get('/bookmarks/add/:id', bookmarksController.bookmarksAddFigurine);
 
 
 // on exporte le router 

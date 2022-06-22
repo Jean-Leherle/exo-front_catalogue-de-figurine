@@ -10,7 +10,7 @@ const mainController = {
     try {
 
       const figurines = await dataMapper.getAllFigurines();
-
+      
       res.render('accueil.ejs', { figurines });
     }
     catch (error) {
@@ -36,6 +36,19 @@ const mainController = {
     }
 
   },
+
 };
+
+/* function testWithSession(req) {
+  console.log(req.session);
+
+  if (req.session.count === undefined) { // Si la session vient tout juste d'être initialisé, je n'ai pas encore accès à req.session.count
+    req.session.count = 0; // Donc je l'initialise
+  } else {
+    req.session.count += 1; // Sinon je l'incrémente
+  }
+
+  console.log("Vous êtes à votre visite numéro", req.session.count);
+} */
 
 module.exports = mainController;
